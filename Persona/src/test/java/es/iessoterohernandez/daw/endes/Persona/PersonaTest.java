@@ -2,7 +2,6 @@ package es.iessoterohernandez.daw.endes.Persona;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
@@ -38,12 +37,12 @@ public class PersonaTest {
 	}
 
 	@Test
-	void testMayorEdad() {
+	void testEsMayorDeEdad() {
 		assertTrue(persona.esMayorDeEdad());
 	}
 
 	@Test
-	void testMenorEdad() {
+	void testEsMenorDeEdad() {
 		persona.setEdad(13);
 		assertFalse(persona.esMayorDeEdad());
 	}
