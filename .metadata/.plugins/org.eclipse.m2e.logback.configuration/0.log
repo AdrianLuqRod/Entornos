@@ -186,3 +186,4 @@ java.io.FileNotFoundException: C:\Users\usuario\.cache\tooling\gradle\versions.j
 2024-02-21 13:34:23,207 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2024-02-21 13:34:23,207 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\usuario\Documents\Entornos\Entornos\tarea3\src\main\resources
 2024-02-21 13:34:23,209 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-21 13:34:23,209 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\usuario\Documents\Entornos\Entornos\tarea3\src\test\resources
