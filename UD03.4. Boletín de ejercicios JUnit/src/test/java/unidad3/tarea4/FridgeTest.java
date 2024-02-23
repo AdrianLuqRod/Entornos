@@ -36,7 +36,7 @@ class FridgeTest {
     }
 	
 	@ParameterizedTest()
-	@ValueSource(strings = {"fresas", "queso", "zumo"})
+	@ValueSource(strings = {"cheese", "orange", "juice"})
 	void testMeterAlimentos(String alimento) {
 		assertTrue(fr1.put(alimento));
 	}
