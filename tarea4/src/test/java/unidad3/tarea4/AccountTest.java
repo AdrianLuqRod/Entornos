@@ -1,48 +1,109 @@
 package unidad3.tarea4;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.isA;
 
 import org.junit.jupiter.api.BeforeEach;
+
+import org.junit.jupiter.api.AfterEach;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
 class AccountTest {
 
-	Account ac1;
-	float balanceInicial,tarifa;
-	
+	private Account ac1;
+
 	@BeforeEach
-	void init() {
-		ac1 = new Account("Juan", 112233445566L, 600F);
-		balanceInicial = ac1.getBalance();
-		tarifa = 2F;
+
+	public void setUp() {
+
+		ac1 = new Account("Juanma Mesa", 654321, 1000.0f);
+
 	}
-	
+
 	@Test
-	void testCuentaCreada() {
-		assertThat(ac1, notNullValue());
+
+	public void testDepositValidAmount() {
+
+		assertTrue(ac1.deposit(500.0f));
+
+		assertEquals(1500.0f, ac1.getBalance());
+
 	}
-	
+
 	@Test
-	void testAnadirInteres() {
+
+	public void testDepositNegativeAmount() {
+
+		assertFalse(ac1.deposit(-400.0f));
+
+		assertEquals(1000.0f, ac1.getBalance());
+
+	}
+
+	@Test
+
+	public void testWithdraw() {
+
+		assertTrue(ac1.withdraw(500.0f, 0.0f));
+
+		assertEquals(500.0f, ac1.getBalance());
+
+		assertFalse(ac1.withdraw(-500.0f, 0.0f));
+
+		assertFalse(ac1.withdraw(1500.0f, 0.0f));
+
+		assertFalse(ac1.withdraw(-500.0f, 20.0f));
+
+	}
+
+	@Test
+
+	public void testAddInterest() {
+
 		ac1.addInterest();
-		assertNotEquals(ac1.getBalance(), balanceInicial);
+
+		assertEquals(1045.0f, ac1.getBalance(), 0.001);
+
 	}
-	
+
 	@Test
-	void testNumeroCuentaLong() {
-		assertThat(ac1.getAccountNumber(), isA(long.class));
+
+	public void testConstructor() {
+
+		assertEquals("Juanma Mesa", ac1.name);
+
+		assertEquals(123456, ac1.getAccountNumber());
+
+		assertEquals(1000.0f, ac1.getBalance());
+
 	}
-	
+
 	@Test
-    void testToString() {
-		String resultado = ac1.toString();
-		assertTrue(resultado.contains(Long.toString(ac1.getAccountNumber())));
-	    assertTrue(resultado.contains(String.format("%.2f", balanceInicial)));
-    }
-	
+
+	public void testWithdrawInvalidAmount() {
+
+		assertFalse(ac1.withdraw(-500.0f, 20.0f));
+
+		assertEquals(1000.0f, ac1.getBalance());
+
+	}
+
+	@Test
+
+	public void testWithdrawExceedingBalanceWithFee() {
+
+		assertFalse(ac1.withdraw(1500.0f, 20.0f));
+
+		assertEquals(1000.0f, ac1.getBalance());
+
+	}
+
+	@Test
+
+	public void testToString() {
+
+		assertEquals("654321\tJuanma Mesa\t$1,000.00", ac1.toString());
+
+	}
+
 }
